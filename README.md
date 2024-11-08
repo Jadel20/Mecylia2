@@ -20,6 +20,7 @@ This class diagram illustrates the main entities and relationships:
 
  -SalesOrder: Contains details about completed purchases.
  
+![UML (Mecylia) - Page 1](https://github.com/user-attachments/assets/89ad9387-edd4-46e8-9a80-0c84d317057b)
 
 ## SET UP
 
