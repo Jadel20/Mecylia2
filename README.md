@@ -20,11 +20,12 @@ This class diagram illustrates the main entities and relationships:
 
  -SalesOrder: Contains details about completed purchases.
  
-![UML (Mecylia) - Page 1](https://github.com/user-attachments/assets/89ad9387-edd4-46e8-9a80-0c84d317057b)
+![UML (Mecylia) - Page 1 (1)](https://github.com/user-attachments/assets/e00a5110-a801-4252-a76a-1ba8eaff8191)
+
 
 ## SET UP
 
-Repository :
+Repository : https://github.com/Jadel20/Mecylia2.git
 
 ## Technologies used
 - Java
@@ -33,10 +34,28 @@ Repository :
 
 ## Controller and routes structure
 
+1- CustomerController
+- GET api/customer/{id}: Fetch a customer by ID.
+- POST api/customer: Create a new customer.
+- PUT api/customer/{id}: Update customer details by ID
 
+2- ItemController
+- GET api/items: List all items.
+- POST api/items: Add a new item.
+- PUT api/items/{id} :Update an item by ID
+- DELETE api/items/{id}: Delete an item by ID
+
+3-CartController
+- GET /carts : Get all the carts
+- DELETE /carts/{id} : Delete cart by ID
+  
+4- SalesOrderController
+- GET /orders: Get all the sale orders
+- GET /orders/{id}: Get specific sale order by ID
+- PUT /orders: Get
 
 ## Extra links
-Presentation slides :
+Presentation slides : https://docs.google.com/presentation/d/1PzPSWukbC6hD0nBRIas9slxpuFYBMfumE-AL7aBYREI/edit#slide=id.p
 
 ## Future work
 - Payment integration: Integrate with a payment gateway for order payment.
