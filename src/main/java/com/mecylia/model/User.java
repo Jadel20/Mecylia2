@@ -4,21 +4,21 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 import static jakarta.persistence.FetchType.EAGER;
 
-/**
- * Entity class for representing a User in the database
- */
+//Entity class for representing a User in the database
+
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
 
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

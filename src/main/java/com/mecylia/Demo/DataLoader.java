@@ -1,7 +1,5 @@
 package com.mecylia.Demo;
 
-
-
 import com.mecylia.Repository.CartRepository;
 import com.mecylia.Repository.CustomerRepository;
 import com.mecylia.Repository.ItemRepository;
@@ -115,6 +113,7 @@ public class DataLoader implements CommandLineRunner {
         cart4.setQuantity(1);
         cart4.setPrice(59.99);
         cartRepository.save(cart4);
+
     }
 }
 

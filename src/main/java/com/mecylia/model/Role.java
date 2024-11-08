@@ -11,9 +11,8 @@ import java.util.Collection;
 
 import static jakarta.persistence.FetchType.LAZY;
 
-/**
- * Entity class for representing a Role in the database
- */
+//Entity class for representing a Role in the database
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -33,4 +32,5 @@ public class Role {
     public Role(String name) {
         this.name = name;
     }
+
 }
