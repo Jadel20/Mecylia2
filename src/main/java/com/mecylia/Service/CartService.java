@@ -5,10 +5,12 @@ import com.mecylia.Repository.CartRepository;
 import com.mecylia.Repository.CustomerRepository;
 import com.mecylia.Repository.ItemRepository;
 import com.mecylia.model.Cart;
+import com.mecylia.model.Item;
 import jakarta.transaction.Transactional;
 import lombok.*;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,11 +42,6 @@ public class CartService {
         return cartRepository.findAll();
     }
 
-//    // Find cart by Id
-//    @Transactional
-//    public Cart findCartById(Long Id) {
-//        return cartRepository.findById(Id).orElse(null);
-//    }
 
     //Update a cart
     @Transactional
@@ -56,6 +53,8 @@ public class CartService {
                     cartToUpdate.setId(id);
                 return cartRepository.save(cartToUpdate);
     }
+
+
 
     //Add an item to cart
     public Cart addItemToCart(Long Id, Long itemId, int quantity) {

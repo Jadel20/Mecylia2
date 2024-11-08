@@ -19,15 +19,8 @@ public class CartController {
     //Find all cart
     @GetMapping("/all")
     public List<Cart> findAll () {
-    return cartService.findAll();
+        return cartService.findAll();
     }
-
-//    //Find cart by Id
-//    @GetMapping("/{id}")
-//    public Cart findById(@PathVariable Long id) {
-//        return cartService.findCartById(id);
-//    }
-
 
     //Create a cart
     @PostMapping

@@ -6,8 +6,9 @@ import com.mecylia.Service.RoleService;
 import com.mecylia.model.Role;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.userdetails.User;
+import com.mecylia.model.User;
 import org.springframework.stereotype.Service;
+
 
 @Service
 @RequiredArgsConstructor

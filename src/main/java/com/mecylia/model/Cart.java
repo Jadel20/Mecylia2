@@ -47,6 +47,26 @@ public class Cart {
     public Cart(Customer customer) {
         this.customer = customer;
     }
+
+    public double getTotalPrice() {
+        double totalPrice = 0;
+        for (Item item : items) {
+            totalPrice += item.getPrice();
+        }
+        return totalPrice;
+    }
+
+    public void displayCart (){
+        if (items.isEmpty()){
+            System.out.println("your cart is empty");
+        }else{
+            System.out.println("Items in your cart ");
+            for (Item item : items) {
+                System.out.println(item.toString());
+            }
+            System.out.println("Total price is " + getTotalPrice());
+        }
+    }
 }
 
 

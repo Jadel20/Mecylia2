@@ -21,7 +21,7 @@ public List<SalesOrder> findAll() {
     return salesOrderService.findAll();
 }
 
-//To return sale orders by ID
+//To get sale orders by ID
 @GetMapping ("/{id}")
 public SalesOrder findById(@PathVariable Long id) {
 return salesOrderService.findById(id);

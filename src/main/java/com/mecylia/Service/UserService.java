@@ -1,6 +1,6 @@
 package com.mecylia.Service;
 
-import org.springframework.security.core.userdetails.User;
+import com.mecylia.model.User;
 
 import java.util.List;
 

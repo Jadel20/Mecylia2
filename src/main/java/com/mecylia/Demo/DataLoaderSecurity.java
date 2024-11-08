@@ -25,8 +25,6 @@ public class DataLoaderSecurity implements CommandLineRunner {
         roleService.save(new Role("ROLE_ADMIN"));
         roleService.save(new Role("ROLE_USER"));
 
-        userService.saveUser("Pauline", "Pauline75", "123FG");
-
 
         roleService.addRoleToUser("Pauline75", "ROLE_USER");
         roleService.addRoleToUser("Salmaben", "ROLE_USER");

@@ -21,7 +21,7 @@ public class CustomerController {
         return customerService.findAll();
     }
     // Return customer by id
-    @GetMapping ("{/id}")
+    @GetMapping ("{id}")
     public Customer findById(@PathVariable Long id){
         return customerService.findById(id);
     }
