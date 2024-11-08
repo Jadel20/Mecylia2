@@ -40,8 +40,6 @@ public class DataLoader implements CommandLineRunner {
                 new Item("Aurora of Atlas", "Adjustable black velvet vest. Crafted with unparalleled artisty and attention to detail, this vest is a timeless expression of heritage and elegance", ItemSize.LARGE, "Black and red", 79.99, 4),
                 new Item("Amazigh Artisty Belt Corset & Cuff Design Set", "Say farewell to sizing struggles with our multicolor waistbelt corset, ensuring a perfect fit for all body types", ItemSize.ONE_SIZE, "Multicolor", 89.90, 5),
                 new Item("Vintage Vagabond Carryall XL", "Crafted for the spirited soul who traverse the globe, embracing diverse cultures and adorning themselves in the rich tapestry of ethnic accessories", ItemSize.ONE_SIZE, "Brown", 349.99, 2)
-
-
         ));
 
         customerRepository.saveAll(List.of(
