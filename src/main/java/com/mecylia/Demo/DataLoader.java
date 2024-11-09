@@ -4,9 +4,12 @@ import com.mecylia.Repository.CartRepository;
 import com.mecylia.Repository.CustomerRepository;
 import com.mecylia.Repository.ItemRepository;
 import com.mecylia.Repository.SalesOrderRepository;
+import com.mecylia.Service.RoleService;
+import com.mecylia.Service.UserService;
 import com.mecylia.model.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -19,6 +22,9 @@ public class DataLoader implements CommandLineRunner {
     private final CustomerRepository customerRepository;
     private final CartRepository cartRepository;
     private final SalesOrderRepository salesOrderRepository;
+    private final RoleService roleService;
+    private final UserService userService;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public void run(String... args) throws Exception {
@@ -43,10 +49,20 @@ public class DataLoader implements CommandLineRunner {
         ));
 
         customerRepository.saveAll(List.of(
-                new Customer("Pauline", "Martin", 12 - 10 - 2000, "Pmartin@yahoo.fr", "20 avenue de le Republique", "Paris", 0612232345, 991),
-                new Customer("Selma", "Ben Omar", 5 - 4 - 1989, "sbom@gmail.com", "10 rue de Tanger", "Casablanca", 677875087, 298765451),
-                new Customer("Carmen", " Santos", 5 - 1 - 2001, "carmends@gmail.com", "Carrer de la Jonquera, 4", "Madrid", 666876543, 1228)
+                new Customer("Pauline Martin","pauma24",passwordEncoder.encode("1234"), "Pauline", "Martin", 12 - 10 - 2000, "Pmartin@yahoo.fr", "20 avenue de le Republique", "Paris", 61223233, 991),
+                new Customer("Selma ben","selma24",passwordEncoder.encode("1234"),"Selma", "Ben Omar", 5 - 4 - 1989, "sbom@gmail.com", "10 rue de Tanger", "Casablanca", 677875087, 298765451),
+                new Customer("Carmen Sant","carmen24",passwordEncoder.encode("1234"),"Carmen", " Santos", 5 - 1 - 2001, "carmends@gmail.com", "Carrer de la Jonquera, 4", "Madrid", 666876543, 1228)
         ));
+
+        userService.saveUser(new User("Julie", "julie", "1234"));
+        roleService.save(new Role("ROLE_ADMIN"));
+        roleService.save(new Role("ROLE_USER"));
+
+
+        roleService.addRoleToUser("pauma24", "ROLE_USER");
+        roleService.addRoleToUser("selma24", "ROLE_USER");
+        roleService.addRoleToUser("carmen24", "ROLE_USER");
+        roleService.addRoleToUser("julie", "ROLE_ADMIN");
 
         SalesOrder order1 = new SalesOrder();
         order1.setCustomer(customerRepository.getOne(1L));

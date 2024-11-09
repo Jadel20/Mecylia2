@@ -1,6 +1,7 @@
 package com.mecylia.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
@@ -36,13 +37,34 @@ public class Customer extends User {
         this.creditCardNumber = creditCardNumber;
     }
 
+    public Customer(String name, String username, String password, String firstName, String lastName, int dateOfBirth, String email, String address, String city, int phoneNumber, int creditCardNumber) {
+        super(name, username, password);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.email = email;
+        this.address = address;
+        this.city = city;
+        this.phoneNumber = phoneNumber;
+        this.creditCardNumber = creditCardNumber;
+    }
+
     @OneToMany(mappedBy = "customer")
+    @JsonIgnore
     private List<SalesOrder> salesOrders;
 
     @OneToOne
+    @JsonIgnore
     private Cart cart;
 
 
+    public void setPassword(String password) {
+        super.setPassword(password);
+    }
+
+    public void setUsername(String username) {
+        super.setUsername(username);
+    }
 }
 
 

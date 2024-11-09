@@ -1,5 +1,6 @@
 package com.mecylia.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,8 +22,10 @@ import static jakarta.persistence.FetchType.EAGER;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Long id;
 
+    @JsonIgnore
     private String name;
 
     private String username;
@@ -35,6 +38,7 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
+    @JsonIgnore
     private Collection<Role> roles = new ArrayList<>();
 
     public User(String name, String username, String password) {

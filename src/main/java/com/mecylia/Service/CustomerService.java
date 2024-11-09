@@ -3,7 +3,12 @@ package com.mecylia.Service;
 import com.mecylia.Repository.CustomerRepository;
 import com.mecylia.model.Customer;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.BadRequestException;
+import org.springframework.boot.web.server.WebServerException;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -12,10 +17,15 @@ import java.util.List;
 
 public class CustomerService {
 
+    private final PasswordEncoder passwordEncoder;
+
     private final CustomerRepository customerRepository;
 
     //Create a new customer
-    public Customer createCustomer (Customer customer) {
+    public Customer createCustomer (Customer customer){
+
+        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+
         return customerRepository.save(customer);
     }
 

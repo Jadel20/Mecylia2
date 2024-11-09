@@ -13,30 +13,42 @@ import java.util.List;
 @RequiredArgsConstructor
 
 public class SalesOrderController {
-private final SalesOrderService salesOrderService;
+    private final SalesOrderService salesOrderService;
 
-//To return all the sale orders
-@GetMapping()
-public List<SalesOrder> findAll() {
-    return salesOrderService.findAll();
-}
+    //To return all the sale orders
+    @GetMapping()
+    public List<SalesOrder> findAll() {
+        return salesOrderService.findAll();
+    }
 
-//To get sale orders by ID
-@GetMapping ("/{id}")
-public SalesOrder findById(@PathVariable Long id) {
-return salesOrderService.findById(id);
-}
+    //To get sale orders by ID
+    @GetMapping("/{id}")
+    public SalesOrder findById(@PathVariable Long id) {
+        return salesOrderService.findById(id);
+    }
 
-// To update Sales Order by Id
-@PostMapping ("/{id}")
-public SalesOrder updateSalesOrder (@RequestBody SalesOrder salesOrder, @PathVariable Long id) {
- return salesOrderService.updateSalesOrder(salesOrder,id);
-}
+    // To update Sales Order by Id
+    @PostMapping("/{id}")
+    public SalesOrder updateSalesOrder(@RequestBody SalesOrder salesOrder, @PathVariable Long id) {
+        return salesOrderService.updateSalesOrder(salesOrder, id);
+    }
 
-@DeleteMapping("/{id}")
-@ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteSalesOrder (@PathVariable Long id) {
-    salesOrderService.deleteSalesOrderById(id);
-}
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteSalesOrder(@PathVariable Long id) {
+        salesOrderService.deleteSalesOrderById(id);
+    }
+
+
+    @PatchMapping("/{orderId}/item/{itemId}")
+    public SalesOrder addItem(@PathVariable Long orderId, @PathVariable Long itemId) {
+        return salesOrderService.addItemToOrder(orderId, itemId);
+    }
+
+    @DeleteMapping("/{orderId}/item/{itemId}")
+    public SalesOrder removeItem(@PathVariable Long orderId, @PathVariable Long itemId) {
+        return salesOrderService.removeItemFromOrder(orderId, itemId);
+    }
+
 }
 

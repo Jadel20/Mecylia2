@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -40,7 +41,15 @@ public class SalesOrder {
     private Customer customer;
 
     @ManyToMany
-    private List<Item> items;
+    private List<Item> items = new ArrayList<>();
+
+    public void addItem(Item item) {
+        items.add(item);
+    }
+
+    public void removeItem(Long itemId) {
+        items.removeIf(item -> item.getId().equals(itemId));
+    }
 
 }
 

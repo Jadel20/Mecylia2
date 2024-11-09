@@ -7,6 +7,7 @@ import com.mecylia.Repository.ItemRepository;
 import com.mecylia.Repository.SalesOrderRepository;
 import com.mecylia.model.Item;
 import com.mecylia.model.SalesOrder;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 
-public class SalesOrderService extends SalesOrder {
+public class SalesOrderService {
 
     private final SalesOrderRepository salesOrderRepository;
     private final ItemRepository itemRepository;
@@ -48,20 +49,35 @@ public class SalesOrderService extends SalesOrder {
         }
     }
 
-    //Add an item to an order
-    public void addItemToCart (Item item) {
-    this.itemRepository.save(item);
-    item.getSalesOrders().add(this);
-    }
+//    //Add an item to an order
+//    public void addItemToCart (Item item) {
+//    this.itemRepository.save(item);
+//    item.getSalesOrders().add(this);
+//    }
 
-    //Remove an item to the order
-    public void removeItemFromCart (Item item) {
-        this.itemRepository.delete(item);
-        item.getSalesOrders().remove(this);
-    }
+//    //Remove an item to the order
+//    public void removeItemFromCart (Item item) {
+//        this.itemRepository.delete(item);
+//        item.getSalesOrders().remove(this);
+//    }
 
     //Delete order
     public void deleteSalesOrderById (Long id) {
         salesOrderRepository.deleteById(id);
+    }
+
+    @Transactional
+    public SalesOrder addItemToOrder(Long orderId, Long itemId) {
+        var salesOrder = salesOrderRepository.findById(orderId).orElseThrow();
+        var item = itemRepository.findById(itemId).orElseThrow();
+        salesOrder.addItem(item);
+        return salesOrderRepository.save(salesOrder);
+    }
+
+    @Transactional
+    public SalesOrder removeItemFromOrder(Long orderId, Long itemId) {
+        var salesOrder = salesOrderRepository.findById(orderId).orElseThrow();
+        salesOrder.removeItem(itemId);
+        return salesOrderRepository.save(salesOrder);
     }
 }
